@@ -29,15 +29,6 @@ Submitted to *Vehicle System Dynamics* (Taylor & Francis), Q1.
   <em><b>Physical Testbench Overview:</b> Direct-drive steering actuator (ODrive v0.5.6 / MKS XDrive Mini, BLDC hub motor, 720 PPR optical quadrature encoder, and 24.3V DC power stage) integrated with Assetto Corsa in real-time Hardware-in-the-Loop.</em>
 </p>
 
-<p align="center">
-  <img src="hardware/media/bench_hil_demonstration.gif" width="760" alt="Physical Direct-Drive Steering Testbench in HIL Operation">
-  <br>
-  <em><b>Live Video Demonstration:</b> Closed-loop steering tracking under resistive tire self-aligning torque load (50 Hz closed loop, 8 kHz internal FOC current control). Drop your recorded <code>bench_hil_demonstration.gif</code> into <code>hardware/media/</code> to stream inline on GitHub.</em>
-</p>
-
-> [!TIP]
-> Complete instructions for converting recorded video runs (`.mp4`) into lightweight, online streaming GIFs via `ffmpeg` are provided in [`hardware/media/README.md`](hardware/media/README.md).
-
 ---
 
 ## 1. Abstract & Key Findings
@@ -85,17 +76,14 @@ Detailed specifications, ratings, and approximate costs are listed in [`hardware
 ### 2.2 Electrical Schematics & Interconnections
 Complete circuit diagrams, wire gauges, grounding, and pinouts are detailed in [`hardware/SCHEMATICS.md`](hardware/SCHEMATICS.md):
 
-```mermaid
-flowchart LR
-    Mains["AC 110/220V"] --> E_STOP["Emergency Stop"]
-    E_STOP --> PSU["24.3V 15A PSU"]
-    PSU -->|"DC+ / DC-"| ODrive["ODrive v0.5.6 Inverter\n(STM32F405 @ 168 MHz)"]
-    ODrive ---|"AUX_V+ / AUX_V-"| Brake["50W 2.0 Ohm Shunt Resistor"]
-    ODrive -->|"3-Phase (U, V, W)"| Motor["Direct-Drive BLDC Motor"]
-    Motor ===|"1:1 Mod 1.0 Gears"| Encoder["720 PPR Optical Encoder"]
-    Encoder -->|"5V, GND, A, B, Z"| ODrive
-    ODrive <-->|"USB CDC Serial (50 Hz)"| PC["Host PC (Python Bridge + AC)"]
-```
+| Subsystem | Source Terminal | Destination Terminal | Wire / Bus | Function |
+| :--- | :--- | :--- | :---: | :--- |
+| **Mains AC** | 110V/220V Outlet | Industrial PSU (24.3V 15A) | 16 AWG | Primary AC power via Emergency Stop switch |
+| **DC Bus** | PSU V+ / V- | ODrive `DC+` / `DC-` | 14 AWG | Regulated 24.3V DC high-current bus |
+| **Dynamic Brake** | ODrive `AUX_V+` / `AUX_V-` | Aluminum Shunt Resistor | 18 AWG | 50W 2.0 $\Omega$ back-EMF energy dissipation |
+| **3-Phase Motor** | ODrive `M0_U, V, W` | BLDC Stator Phases | 16 AWG | 8 kHz FOC high-current drive |
+| **Optical Encoder** | Encoder A, B, Z, 5V, GND | ODrive Axis 0 Header | 24 AWG | 2,880 CPR quadrature angle feedback |
+| **Host Bridge** | ODrive USB Type-C | Workstation USB Hub | USB CDC | 50 Hz ASCII setpoints & telemetry logging |
 
 ### 2.3 3D CAD Models & Mechanical Parts
 All CAD parts, printing orientations, and infill parameters are documented in [`hardware/cad/README.md`](hardware/cad/README.md):
@@ -109,37 +97,13 @@ All CAD parts, printing orientations, and infill parameters are documented in [`
 
 ## 3. Software Architecture & Multi-Rate Information Flow
 
-The Hardware-in-the-Loop system runs across three asynchronous timing domains:
+The Hardware-in-the-Loop system operates across three asynchronous timing domains: 100 Hz multibody vehicle simulation, 20 Hz supervisory predictive control, and 8 kHz internal FOC current control:
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant Sim as Assetto Corsa (100 Hz Multibody Physics)
-    participant Shm as Windows Shared Memory (acpmf_physics)
-    participant Ctrl as Python MPC Supervisory Bridge (20 Hz)
-    participant ODrive as ODrive v0.5.6 (50 Hz Serial / 8 kHz FOC)
-    participant Motor as Physical Steering Wheel & BLDC Motor
-
-    loop Every 10 ms (100 Hz Physics)
-        Sim->>Sim: Solve 14-DOF chassis, suspension & Pacejka tire forces
-        Sim->>Shm: Publish vehicle states (vx, vy, r, X, Y, yaw) & rack torque tau_a
-    end
-
-    loop Every 50 ms (20 Hz Predictive Control)
-        Shm->>Ctrl: Ingest vehicle states & compute tracking errors (ey, e_psi)
-        Ctrl->>Ctrl: Augment state [ey, e_psi, delta_act, dot_delta_act]
-        Ctrl->>Ctrl: Evaluate dynamic capacity boundary dot_delta_max(tau_a)
-        Ctrl->>Ctrl: Solve convex QP (OSQP, mean solve time 0.65 ms)
-        Ctrl->>Sim: Dispatch commanded steering delta_cmd via vJoy DirectInput
-    end
-
-    loop Every 20 ms (50 Hz Actuator Telemetry & FFB)
-        Ctrl->>ODrive: Dispatch resistive tire torque command tau_a via ASCII USB
-        ODrive->>Motor: 8 kHz FOC current loop applies electromagnetic load
-        Motor->>ODrive: Optical encoder measures physical wheel position & velocity
-        ODrive->>Ctrl: Return actuator telemetry (delta_act, dot_delta_act, phase current)
-    end
-```
+<p align="center">
+  <img src="figures/final/Fig1a_HIL_Communication_Architecture.png" width="820" alt="Hardware-in-the-Loop Communication Architecture & Signal Flow">
+  <br>
+  <em><b>Figure 1:</b> Multi-rate Hardware-in-the-Loop communication architecture and signal flow across simulation, predictive supervisor, and actuator tiers.</em>
+</p>
 
 ### Mathematical Formulation Summary
 - **Augmented State:** $\bar{x} = [e_y, e_\psi, \delta_{\mathrm{act}}, \dot{\delta}_{\mathrm{act}}]^T$
@@ -188,7 +152,7 @@ Fits the voltage-plateau power-law capability boundary against experimental load
 ```matlab
 run('scripts/matlab/process_phase2_capacity_envelope.m');
 ```
-*Outputs:* `results/phase2_envelope_model.mat` ($\gamma = 4.50$, $\tau_{\mathrm{stall}} = 2.45\text{ N}\cdot\text{m}$, $R^2_{\mathrm{val}} = 0.9521$).
+*Outputs:* `results/phase2_capacity_envelope_constraints.mat` ($\gamma = 4.50$, $\tau_{\mathrm{stall}} = 2.45\text{ N}\cdot\text{m}$, $R^2_{\mathrm{val}} = 0.9521$).
 
 ### Step 3: Predictive Controller Formulation & SIL Ablation (Phase 3)
 Executes the convex QP MPC simulation-in-the-loop comparison across Kinematic, Rate-Saturated, and Proposed Capacity-Aware formulations:
@@ -219,17 +183,17 @@ Experimental datasets are organized under `data/raw/`:
 
 ```text
 data/raw/
-├── bench_phase1/             # 135 raw CSV logs from physical bench identification
-│   ├── test1_inertia/        # Step-torque acceleration runs (rotor + handwheel inertia)
-│   ├── test2_delay/          # Command-to-response pulse transport delay logs
-│   ├── test3_rate_sat/       # Unloaded maximum rotational velocity steps
-│   ├── test4_frequency/      # Multi-frequency logarithmic chirp sweeps (0.1 to 10 Hz)
-│   └── test5_torque_speed/   # Velocity saturation under active resistive counter-torques
-└── hil_phase4/               # Full-lap closed-loop HIL telemetry runs
-    ├── monza_kinematic/      # Autodromo Nazionale di Monza (Kinematic baseline runs)
-    ├── monza_rate_lim/       # Monza (Constant rate-limited baseline runs)
-    ├── monza_proposed/       # Monza (Proposed capacity-aware MPC runs)
-    └── magione_transfer/     # Autodromo dell'Umbria (Zero-shot transfer runs)
+├── bench_phase1/                  # 135 raw CSV logs from physical bench identification
+│   ├── test1_inertia_friction/    # Step-torque acceleration runs (rotor + handwheel inertia)
+│   ├── test2_time_delay/          # Command-to-response pulse transport delay logs
+│   ├── test3_rate_saturation/     # Unloaded maximum rotational velocity steps
+│   ├── test4_frequency_chirp/     # Multi-frequency logarithmic chirp sweeps (0.1 to 10 Hz)
+│   ├── test5_torque_speed_load/   # Velocity saturation under active resistive counter-torques
+│   └── calibration_finalff_torque.csv # Static torque calibration log
+└── hil_phase4/                    # 41 formal benchmark closed-loop HIL telemetry runs
+    ├── HILL_prueba_s00_mpc_actuator_aware_*   # Proposed Capacity-Aware MPC runs (Monza & Magione)
+    ├── HILL_prueba_s00_mpc_actuator_fixed_*   # Baseline 3 Fixed-Bounds MPC runs (Monza)
+    └── HILL_prueba_s00_mpc_cinematico_*       # Baseline 1 Blind Kinematic MPC runs (Monza)
 ```
 
 ---
