@@ -104,35 +104,11 @@ All CAD parts, printing orientations, and infill parameters are documented in [`
 
 The Hardware-in-the-Loop system runs across three asynchronous timing domains:
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant Sim as Assetto Corsa (100 Hz Multibody Physics)
-    participant Shm as Windows Shared Memory (acpmf_physics)
-    participant Ctrl as Python MPC Supervisory Bridge (20 Hz)
-    participant ODrive as ODrive v0.5.6 (50 Hz Serial / 8 kHz FOC)
-    participant Motor as Physical Steering Wheel & BLDC Motor
-
-    loop Every 10 ms (100 Hz Physics)
-        Sim->>Sim: Solve 14-DOF chassis, suspension & Pacejka tire forces
-        Sim->>Shm: Publish vehicle states (vx, vy, r, X, Y, yaw) & rack torque tau_a
-    end
-
-    loop Every 50 ms (20 Hz Predictive Control)
-        Shm->>Ctrl: Ingest vehicle states & compute tracking errors (ey, e_psi)
-        Ctrl->>Ctrl: Augment state [ey, e_psi, delta_act, dot_delta_act]
-        Ctrl->>Ctrl: Evaluate dynamic capacity boundary dot_delta_max(tau_a)
-        Ctrl->>Ctrl: Solve convex QP (OSQP, mean solve time 0.65 ms)
-        Ctrl->>Sim: Dispatch commanded steering delta_cmd via vJoy DirectInput
-    end
-
-    loop Every 20 ms (50 Hz Actuator Telemetry & FFB)
-        Ctrl->>ODrive: Dispatch resistive tire torque command tau_a via ASCII USB
-        ODrive->>Motor: 8 kHz FOC current loop applies electromagnetic load
-        Motor->>ODrive: Optical encoder measures physical wheel position & velocity
-        ODrive->>Ctrl: Return actuator telemetry (delta_act, dot_delta_act, phase current)
-    end
-```
+<p align="center">
+  <img src="figures/final/Fig1a_HIL_Communication_Architecture.png" width="820" alt="Hardware-in-the-Loop Communication Architecture & Signal Flow">
+  <br>
+  <em><b>Figure 1:</b> Multi-rate Hardware-in-the-Loop communication architecture and signal flow across simulation, predictive supervisor, and actuator tiers.</em>
+</p>
 
 ### Mathematical Formulation Summary
 - **Augmented State:** $\bar{x} = [e_y, e_\psi, \delta_{\mathrm{act}}, \dot{\delta}_{\mathrm{act}}]^T$
