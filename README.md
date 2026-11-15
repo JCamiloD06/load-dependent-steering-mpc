@@ -78,17 +78,11 @@ Detailed specifications, ratings, and approximate costs are listed in [`hardware
 ### 2.2 Electrical Schematics & Interconnections
 Complete circuit diagrams, wire gauges, grounding, and pinouts are detailed in [`hardware/SCHEMATICS.md`](hardware/SCHEMATICS.md):
 
-```mermaid
-flowchart LR
-    Mains["AC 110/220V"] --> E_STOP["Emergency Stop"]
-    E_STOP --> PSU["24.3V 15A PSU"]
-    PSU -->|"DC+ / DC-"| ODrive["ODrive v0.5.6 Inverter\n(STM32F405 @ 168 MHz)"]
-    ODrive ---|"AUX_V+ / AUX_V-"| Brake["50W 2.0 Ohm Shunt Resistor"]
-    ODrive -->|"3-Phase (U, V, W)"| Motor["Direct-Drive BLDC Motor"]
-    Motor ===|"1:1 Mod 1.0 Gears"| Encoder["720 PPR Optical Encoder"]
-    Encoder -->|"5V, GND, A, B, Z"| ODrive
-    ODrive <-->|"USB CDC Serial (50 Hz)"| PC["Host PC (Python Bridge + AC)"]
-```
+<p align="center">
+  <img src="figures/final/Fig1b_Physical_Bench_Setup.png" width="820" alt="Physical Direct-Drive Steering Testbench Setup">
+  <br>
+  <em><b>Figure 2:</b> Physical direct-drive steering testbench setup, close-up instrumentation (BLDC motor, optical encoder, and dynamic brake shunt), and verified hardware specifications.</em>
+</p>
 
 ### 2.3 3D CAD Models & Mechanical Parts
 All CAD parts, printing orientations, and infill parameters are documented in [`hardware/cad/README.md`](hardware/cad/README.md):
