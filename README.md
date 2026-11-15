@@ -1,8 +1,7 @@
 # Experimental Characterization of Load-Dependent Steering Capability and Its Integration into Predictive Path Tracking Control
 
-Official open-source hardware, experimental datasets, predictive control formulation, and data analysis replication package for the research paper:  
+Open-source hardware, experimental datasets, predictive control formulation, and data analysis replication package for:  
 **"Experimental Characterization of Load-Dependent Steering Capability and Its Integration into Predictive Path Tracking Control"**  
-Submitted to *Vehicle System Dynamics* (Taylor & Francis), Q1.
 
 **Authors:**  
 - **Juan Camilo Díaz-López** ([jdiazlop@unal.edu.co](mailto:jdiazlop@unal.edu.co), ORCID: [0009-0008-1148-3120](http://orcid.org/0009-0008-1148-3120))  
@@ -197,27 +196,7 @@ data/raw/
 
 ---
 
-## 7. Citation
-
-If you use this testbench design, experimental datasets, predictive control formulation, or MATLAB analysis code in your research, please cite:
-
-```bibtex
-@article{DiazLopez2026_VSD,
-  author    = {D{\'i}az-L{\'o}pez, Juan Camilo and Lastra-Robles, Jes{\'u}s Alberto and Burgos-Fl{\'o}rez, Francisco Javier},
-  title     = {Experimental Characterization of Load-Dependent Steering Capability and Its Integration into Predictive Path Tracking Control},
-  journal   = {Vehicle System Dynamics},
-  year      = {2026},
-  volume    = {64},
-  number    = {X},
-  pages     = {1--25},
-  publisher = {Taylor \& Francis},
-  doi       = {10.1080/00423114.XXXXXX}
-}
-```
-
----
-
-## 8. License
+## 7. License
 
 - **Software & Hardware Codebase:** Licensed under the [MIT License](LICENSE).
 - **Experimental Datasets & Documentation:** Licensed under [Creative Commons Attribution 4.0 International (CC-BY-4.0)](https://creativecommons.org/licenses/by/4.0/).
