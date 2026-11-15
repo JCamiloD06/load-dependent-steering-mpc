@@ -1,12 +1,5 @@
 # Experimental Characterization of Load-Dependent Steering Capability and Its Integration into Predictive Path Tracking Control
 
-[![Journal](https://img.shields.io/badge/Journal-Vehicle%20System%20Dynamics-blue.svg)](https://www.tandfonline.com/toc/nvsd20/current)
-[![Status](https://img.shields.io/badge/Status-Under%20Review-orange.svg)]()
-[![Hardware](https://img.shields.io/badge/Hardware-Direct--Drive%20Testbench-success.svg)]()
-[![MPC](https://img.shields.io/badge/Control-Convex%20QP%20(OSQP)-green.svg)]()
-[![MATLAB](https://img.shields.io/badge/Analysis-MATLAB%20R2023b-red.svg)]()
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 Official open-source hardware, experimental datasets, predictive control formulation, and data analysis replication package for the research paper:  
 **"Experimental Characterization of Load-Dependent Steering Capability and Its Integration into Predictive Path Tracking Control"**  
 Submitted to *Vehicle System Dynamics* (Taylor & Francis), Q1.
