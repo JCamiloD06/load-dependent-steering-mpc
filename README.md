@@ -1,12 +1,5 @@
 # Experimental Characterization of Load-Dependent Steering Capability and Its Integration into Predictive Path Tracking Control
 
-[![Journal](https://img.shields.io/badge/Journal-Vehicle%20System%20Dynamics-blue.svg)](https://www.tandfonline.com/toc/nvsd20/current)
-[![Status](https://img.shields.io/badge/Status-Under%20Review-orange.svg)]()
-[![Hardware](https://img.shields.io/badge/Hardware-Direct--Drive%20Testbench-success.svg)]()
-[![MPC](https://img.shields.io/badge/Control-Convex%20QP%20(OSQP)-green.svg)]()
-[![MATLAB](https://img.shields.io/badge/Analysis-MATLAB%20R2023b-red.svg)]()
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 Official open-source hardware, experimental datasets, predictive control formulation, and data analysis replication package for the research paper:  
 **"Experimental Characterization of Load-Dependent Steering Capability and Its Integration into Predictive Path Tracking Control"**  
 Submitted to *Vehicle System Dynamics* (Taylor & Francis), Q1.
@@ -75,6 +68,12 @@ Detailed specifications, ratings, and approximate costs are listed in [`hardware
 
 ### 2.2 Electrical Schematics & Interconnections
 Complete circuit diagrams, wire gauges, grounding, and pinouts are detailed in [`hardware/SCHEMATICS.md`](hardware/SCHEMATICS.md):
+
+<p align="center">
+  <img src="figures/final/Fig1b_Physical_Bench_Setup.png" width="820" alt="Physical Direct-Drive Steering Testbench Setup">
+  <br>
+  <em><b>Figure 2:</b> Physical direct-drive steering testbench setup, close-up instrumentation (BLDC motor, optical encoder, and dynamic brake shunt), and verified hardware specifications.</em>
+</p>
 
 | Subsystem | Source Terminal | Destination Terminal | Wire / Bus | Function |
 | :--- | :--- | :--- | :---: | :--- |
