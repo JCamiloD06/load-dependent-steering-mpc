@@ -1,0 +1,14 @@
+# ==============================================================================
+# .gitattributes — GitHub Linguist and Repository Overrides
+# ==============================================================================
+
+# Force GitHub Linguist to recognize all .m files as MATLAB (prevents false classification as Wolfram Language / Mathematica)
+*.m linguist-language=MATLAB
+
+# Ensure binary files are treated properly
+*.mat binary
+*.stl binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary

@@ -1,0 +1,76 @@
+# ==============================================================================
+# .gitignore — Public Replication Repository Filtering
+# ==============================================================================
+
+# Python runtime & caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# MATLAB temporary & autosave files
+*.asv
+*.m~
+slprj/
+*.slxc
+*.autosave
+
+# LaTeX / Pandoc temporary build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# OS & Editor configurations
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary scratch & debug logs
+*.tmp
+*.log
+scratch*
+*_temp.*
+*_crop.png
+*_slice*.png
+data/interim/
+manuscript/
+submission_files/
+
+# ==============================================================================
+# Internal Development, Patches & Auto-Generation Scripts
+# (Excluded per open-source replication repository standards)
+# ==============================================================================
+docs/propuesta_paper_q1*
+docs/informe_*
+docs/definitions/
+docs/*.css
+
+# Automation, text compilation & patch scripts
+scripts/*.py
+scripts/TrialSteerLauncherQ1.cs
+TrialSteer.exe
+Abrir_TrialSteer.bat
+
+# Bench internal patches
+scripts/bench/patch_*.py
+scripts/bench/update_*.py
+scripts/bench/fix_*.py
+scripts/bench/apply_*.py
+scripts/bench/fast_*.py
+scripts/bench/sweep_*.py
+scripts/bench/test_tune_*.py
+scripts/bench/find_stable_*.py

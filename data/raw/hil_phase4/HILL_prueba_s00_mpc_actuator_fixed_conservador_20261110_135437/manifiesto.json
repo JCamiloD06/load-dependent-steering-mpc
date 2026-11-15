@@ -1,0 +1,547 @@
+{
+  "id_corrida": "HILL_prueba_s00_mpc_actuator_fixed_conservador_20261110_135437",
+  "inicio": "2026-11-10T13:54:37",
+  "fin": "2026-11-10T13:58:43",
+  "ciclos": 4879,
+  "meta": {
+    "controlador": "mpc_actuator_fixed",
+    "parametros_controlador": {
+      "N": 15,
+      "Qy": 3.5,
+      "Qpsi": 18.0,
+      "Rdelta": 0.05,
+      "Rddelta": 15.0,
+      "tiempo_max_s": 0.04,
+      "compensar_retardo": true,
+      "restringir_envolvente": false,
+      "actuator_K": 1.0,
+      "actuator_fn_hz": 5.74,
+      "actuator_zeta": 0.85,
+      "actuator_slew_wheel_dps": 462.5,
+      "tau_stall": 2.45,
+      "gamma": 4.5,
+      "T_d_ms": 64.1,
+      "K_ay": 0.3,
+      "_nota": "Baseline 3 (Profesor): Modelo de actuador identificado (J, b, Td) con cotas fijas de catalogo Omega_0 (sin envolvente)"
+    },
+    "perfil": "conservador",
+    "factor_perfil": 0.8,
+    "sesion": 0,
+    "fase": "prueba",
+    "id_plan": "",
+    "etiqueta": "campana_q1_mpc_actuator_fixed_monza_rep2",
+    "fisica_ampliada": true,
+    "motivo_sin_fisica_ampliada": null,
+    "sin_verificar_vehiculo": false,
+    "sesion_ac": {
+      "config": "C:\\Users\\Volante\\Documents\\Paper Q2 SIL-HIL FFB\\scripts\\acq\\TrialSteer_v1.0.1\\TrialSteer\\configs\\juego_ac.json",
+      "inicio": "2026-11-10T13:54:18",
+      "reinicio_pedido": true,
+      "pasos": [
+        {
+          "boton": "conducir",
+          "cliente": [
+            49,
+            174
+          ],
+          "pantalla": [
+            497,
+            342
+          ],
+          "ya_al_frente": true,
+          "alt": false
+        }
+      ],
+      "mods": {
+        "archivos": {
+          "dwrite.dll": false,
+          "extension": false
+        },
+        "csp_activo": false,
+        "sha256_dwrite": null,
+        "_nota": "dwrite.dll carga Custom Shaders Patch al abrir acs.exe, y con él Sol y Pure si están instalados. Renombrarlo lo desactiva sin desinstalar nada."
+      },
+      "rutas": {
+        "ruta_ac": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\assettocorsa",
+        "origen": "configuración",
+        "ruta_ac_configurada": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\assettocorsa",
+        "dir_cfg_juego": "C:\\Users\\Volante\\Documents\\Assetto Corsa\\cfg",
+        "origen_cfg": "configuración"
+      },
+      "abierto_por_lanzador": true,
+      "plantilla": {
+        "archivos": {
+          "race.ini": {
+            "sha256_plantilla": "b2694c6f4f13c342eca357ec33981e41efa86717563f08f3554ab392f4d90d31",
+            "sha256_juego": "b2694c6f4f13c342eca357ec33981e41efa86717563f08f3554ab392f4d90d31",
+            "igual": true
+          },
+          "assists.ini": {
+            "sha256_plantilla": "8260b68e8dc56aa2ba1df57abc60eb739d43b96c8cfa52e29c3d6fc12bb918ad",
+            "sha256_juego": "8260b68e8dc56aa2ba1df57abc60eb739d43b96c8cfa52e29c3d6fc12bb918ad",
+            "igual": true
+          },
+          "controls.ini": {
+            "sha256_plantilla": "ac09d84d7160788432f72332017b95c25211055266140dbd46644af2de5608f4",
+            "sha256_juego": "ac09d84d7160788432f72332017b95c25211055266140dbd46644af2de5608f4",
+            "igual": true
+          },
+          "video.ini": {
+            "sha256_plantilla": "ac882b1bb3259cf6edaae2fa11da50991d9f9a62431369905918144ef0ddca8e",
+            "sha256_juego": "ac882b1bb3259cf6edaae2fa11da50991d9f9a62431369905918144ef0ddca8e",
+            "igual": true
+          }
+        },
+        "reescritos": [],
+        "respaldo": null
+      },
+      "carga_s": 7.61,
+      "assetto_corsa": {
+        "carModel": "alfa_romeo_giulietta_qv",
+        "track": "monza",
+        "acVersion": "1.16.4",
+        "lectura": "ok"
+      },
+      "tamano_cliente": [
+        1024,
+        768
+      ],
+      "clic_automatico_ok": true,
+      "control": {
+        "freno_enviado": 0.3,
+        "lectura": {
+          "status": 2,
+          "packet": 3472,
+          "posicion": 0.856431782245636,
+          "v_kmh": 0.0028270042967051268,
+          "freno": 0.30000001192092896,
+          "volante": 0.0
+        },
+        "ok": true
+      },
+      "estado_final": {
+        "status": 2,
+        "packet": 3475,
+        "posicion": 0.856431782245636,
+        "v_kmh": 0.001426912029273808,
+        "freno": 0.30000001192092896,
+        "volante": 0.0
+      },
+      "fin": "2026-11-10T13:54:36"
+    },
+    "argv": [
+      "C:\\Users\\Volante\\Documents\\Paper Q2 SIL-HIL FFB\\scripts\\acq\\TrialSteer_v1.0.1\\TrialSteer\\ejecutar_corrida.py",
+      "--controlador",
+      "mpc_actuator_fixed",
+      "--perfil",
+      "conservador",
+      "--sesion",
+      "0",
+      "--fase",
+      "prueba",
+      "--tiempo-max-s",
+      "300",
+      "--etiqueta",
+      "campana_q1_mpc_actuator_fixed_monza_rep2",
+      "--info-sesion-ac",
+      "C:\\Users\\Volante\\AppData\\Local\\Temp\\trialsteer_paper_sesion_3756.json"
+    ],
+    "paper_q2": {
+      "condicion": "HIL-L",
+      "directorio_trialsteer_original": "C:\\Users\\Volante\\Documents\\Paper Q2 SIL-HIL FFB\\scripts\\acq\\TrialSteer_v1.0.1\\datos\\corridas",
+      "argv_envoltorio": [
+        "C:\\Users\\Volante\\Documents\\Paper Q2 SIL-HIL FFB\\scripts\\acq\\TrialSteer_v1.0.1\\TrialSteer\\ejecutar_corrida.py",
+        "--controlador",
+        "mpc_actuator_fixed",
+        "--perfil",
+        "conservador",
+        "--sesion",
+        "0",
+        "--fase",
+        "prueba",
+        "--tiempo-max-s",
+        "300",
+        "--etiqueta",
+        "campana_q1_mpc_actuator_fixed_monza_rep2",
+        "--info-sesion-ac",
+        "C:\\Users\\Volante\\AppData\\Local\\Temp\\trialsteer_paper_sesion_3756.json"
+      ],
+      "sha256_envoltorio": "23897779c296307c4eed3dcc076b7928d2ee427fa2c749a04c8220076827128c",
+      "sha256_salida_odrive": "72e2fbc69860efeebc9c7308556e97fdef0761694c544d2202f6b651fb2b4164",
+      "sha256_capa_actuador": "34fd2a3823ba1ca8ba2511b0fbd9e80dcaa3d406d9c56a724551cd5aa556ce79",
+      "sha256_odrive_plant": "9476fafae7e208984e60537b01619912d5738bc6a237f025e84943a7e83670d8",
+      "sha256_registro_ffb_ac": "7b1ba064016dd530c152f9e5eb8c59c74201ac207c15ac63b632339b22c2386b",
+      "sha256_mpc_actuator_aware": "988fb6d9b07d4c81ce2426f5449b3c3245693f9e236dac20b3bda3f5d914eb49",
+      "version_trialsteer": "TrialSteer_v1.0.1",
+      "zona_muerta": {
+        "zona_muerta_carril_m": 0.0,
+        "zona_muerta_rumbo_deg": 0.0,
+        "zona_muerta_volante_deg": 0.0
+      },
+      "volante": {
+        "rango_volante_deg": 900.0,
+        "k_volante_por_rueda": 19.48878817363395,
+        "rueda_rad_eje_completo": 0.403,
+        "signo_vjoy": 1,
+        "periodo_espejo_s": 0.005,
+        "corte_theta_deg": 330.0,
+        "corte_omega_dps": 1080.0,
+        "corte_error_deg": 45.0,
+        "corte_error_s": 0.5,
+        "placa": {
+          "axis0.controller.config.pos_gain": 50.0,
+          "axis0.controller.config.vel_gain": 0.8,
+          "axis0.controller.config.vel_integrator_gain": 2.0,
+          "axis0.motor.config.current_lim": 10.0,
+          "axis0.motor.config.phase_resistance": 0.534272,
+          "axis0.motor.config.phase_inductance": 0.000781,
+          "axis0.encoder.config.cpr": 2880.0,
+          "axis0.encoder.config.phase_offset": 854.0,
+          "config.dc_bus_overvoltage_trip_level": 27.0,
+          "vbus_voltage": 24.231958,
+          "vel_limit_tps": 2.0,
+          "watchdog_s": 0.2,
+          "sign": -1,
+          "port": "COM3",
+          "vel_limit_tolerance": 1.5,
+          "p_zero_vueltas": -0.015964555555555558
+        },
+        "capa": null,
+        "firmware": {
+          "fw_version_major": 0.0,
+          "fw_version_minor": 0.0,
+          "fw_version_revision": 0.0,
+          "fw_version_unreleased": 1.0
+        },
+        "electrico_cada_s": 0.1,
+        "prop_iq": "axis0.motor.current_control.Iq_measured",
+        "prop_vbus": "vbus_voltage",
+        "limite_volante_deg": 250.0,
+        "arranque_sil_kmh": 40.0,
+        "arranque_sil_s": 1.0,
+        "tasa_arranque_dps": 90.0,
+        "consigna_interpolada": true,
+        "zona_muerta_volante_deg": 0.0,
+        "carga": {
+          "fuente": "finalff",
+          "k": 1.0,
+          "tau_max_nm": 1.0,
+          "signo_vjoy": 1,
+          "signo_ff": -1,
+          "fc_hz": 10.0,
+          "rampa_s": 1.0,
+          "max_edad_s": 0.1,
+          "unidad_k": "N·m por unidad de finalFF"
+        },
+        "ffb": {
+          "dispositivo": "ODrive-Wheel HID",
+          "calibracion": {
+            "fecha": "2026-10-08T10:29:31",
+            "port": "COM6",
+            "pendiente_nm_motor_por_nivel": -1.9996637719298245,
+            "ordenada_nm": 2.44000000000022e-05,
+            "residuo_max_nm": 0.00017735438596494513,
+            "signo_placa": -1,
+            "nm_volante_por_nivel": 1.9996637719298245,
+            "mediciones": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.1,
+                -0.199957
+              ],
+              [
+                0.2,
+                -0.399731
+              ],
+              [
+                0.4,
+                -0.799951
+              ],
+              [
+                0.6,
+                -1.199744
+              ],
+              [
+                -0.1,
+                0.20001799999999997
+              ],
+              [
+                -0.2,
+                0.399792
+              ],
+              [
+                -0.4,
+                0.800012
+              ],
+              [
+                -0.6,
+                1.199805
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "nota": "motor en IDLE; depende de la potencia global de FFB de Odrive-Wheel"
+          }
+        },
+        "prop_temp_fet": "axis0.motor.fet_thermistor.temperature"
+      },
+      "corte_hil": null,
+      "ciclos_en_tope_banco": 6,
+      "ciclo_inicio_hil": 154,
+      "ffb_ac": {
+        "filas": 23852,
+        "paquetes_distintos": 23852,
+        "nota": null
+      }
+    }
+  },
+  "config": {
+    "_descripcion": "Configuracion comun de TrialSteer. Trazada, vehiculo, direccion, perfil de velocidad, lazo longitudinal, controladores, abandono automatico, deteccion de vuelta y salida.",
+    "ts_s": 0.05,
+    "trazada": {
+      "csv": "Model Predictive Control/Python/monza_fast_lane.csv",
+      "suavizado_curvatura_m": 15.0,
+      "_nota": "Ventana de 15 m para suavizar la curvatura de la trazada que usan los controladores."
+    },
+    "vehiculo": {
+      "modelo_esperado": "alfa_romeo_giulietta_qv",
+      "desfase_heading_rad": 1.5707963267948966,
+      "indices_delanteras": [
+        0,
+        1
+      ],
+      "indices_traseras": [
+        2,
+        3
+      ],
+      "L_min_m": 2.0,
+      "L_max_m": 3.5,
+      "distancia_max_centro_m": 3.0,
+      "desalineacion_max_rad": 0.17453292519943295,
+      "forzar_respaldo": false,
+      "respaldo": {
+        "L_m": 2.7,
+        "fraccion_punto_desde_trasero": 0.43,
+        "_nota": "Valores de respaldo NO VERIFICADOS, se usan solo si los puntos de contacto leidos no son coherentes. L de 2.7 m supuesto y fraccion estimada entre 0.39 y 0.46 con telemetria."
+      }
+    },
+    "direccion": {
+      "delta_max_rad": 0.403,
+      "tasa_max_rad_s": 0.5235987755982988,
+      "rueda_rad_eje_completo": 0.403,
+      "signo_vjoy": 1,
+      "velocidad_minima_direccion_kmh": 5.0,
+      "velocidad_plena_direccion_kmh": 30.0,
+      "_nota": "rueda_rad_eje_completo y delta_max_rad identificados con telemetria, mediana 0.4029 rad entre dos corridas, con batalla medida de 2.633 m. velocidad_minima_direccion_kmh retiene la direccion con el vehiculo casi detenido, igual para los tres controladores."
+    },
+    "perfil": {
+      "ay_max_ms2": 6.5,
+      "ax_frenado_max_ms2": 10.25,
+      "grip_usage_factor": 0.8,
+      "grip_usage_brake": 0.6,
+      "v_max_recta_ms": 50.0,
+      "suavizado_perfil_m": 0.0,
+      "preview_m": 20.0,
+      "preview_speed_gain": 0.35,
+      "factores": {
+        "conservador": 0.8,
+        "nominal": 0.9,
+        "rapido": 1.0
+      },
+      "_nota": "Perfil base tomado del script de barrido. Los factores escalan el uso de agarre en los perfiles conservador, nominal y rapido."
+    },
+    "longitudinal": {
+      "kp": 0.09848818535681171,
+      "ki": 0.07576014258216285,
+      "kd": 0.0,
+      "limite_integral": 13.199552771636975,
+      "pedal": {
+        "throttle_rise_s": 0.6,
+        "throttle_fall_s": 0.35,
+        "brake_rise_s": 0.45,
+        "brake_fall_s": 0.3
+      },
+      "_nota": "Ganancias fijadas con la regla SIMC sobre la planta de frenado identificada con telemetria, tau_c=0.25 s y theta=0.075 s, kp=1/(a(tau_c+theta)), ki=kp/(4(tau_c+theta)), kd=0, limite_integral=1/ki. Validadas en pista con los tres controladores."
+    },
+    "controladores": {
+      "_nota": "Valores obtenidos con la tanda de sintonia, busqueda aleatoria con semilla 20260918 y 20 vueltas por controlador en perfil nominal, dentro de los rangos de configs/rangos_sintonia.json. Se usan en los tres perfiles.",
+      "pure_pursuit": {
+        "L0_m": 2.182824,
+        "kv_s": 0.475382,
+        "_nota": "Menor RMSE de e_y de su tanda, 0.224 m. kv queda cerca del borde inferior del rango de busqueda."
+      },
+      "stanley": {
+        "k": 2.037435,
+        "epsilon_ms": 1.0,
+        "_nota": "RMSE de e_y de 0.143 m. Con k por encima de 2.59 la vuelta no se completo. epsilon_ms no se sintoniza."
+      },
+      "mpc_cinematico": {
+        "N": 20,
+        "Qy": 0.1,
+        "Qpsi": 1.0,
+        "Rdelta": 15.0,
+        "Rddelta": 200.0,
+        "tiempo_max_s": 0.04,
+        "_nota": "Sintonizacion Optima Baseline HIL (Benchmarking): N=20, Qy=0.10, Qpsi=1.00, Rdelta=15.00, Rddelta=200.00 (Margen de Fase >= 20.8 deg hasta 144 km/h)"
+      },
+      "mpc_actuator_aware": {
+        "N": 15,
+        "Qy": 3.5,
+        "Qpsi": 18.0,
+        "Rdelta": 0.05,
+        "Rddelta": 15.0,
+        "tiempo_max_s": 0.04,
+        "compensar_retardo": true,
+        "restringir_envolvente": true,
+        "actuator_K": 1.0,
+        "actuator_fn_hz": 5.74,
+        "actuator_zeta": 0.85,
+        "actuator_slew_wheel_dps": 462.5,
+        "tau_stall": 2.45,
+        "gamma": 4.5,
+        "T_d_ms": 64.1,
+        "K_ay": 0.3,
+        "_nota": "Sintonización Paper Q1 (Fase 3/4): Qy=3.50, Qpsi=18.00, Rdelta=0.05, Rddelta=15.00, N=15"
+      },
+      "mpc_actuator_fixed": {
+        "N": 15,
+        "Qy": 3.5,
+        "Qpsi": 18.0,
+        "Rdelta": 0.05,
+        "Rddelta": 15.0,
+        "tiempo_max_s": 0.04,
+        "compensar_retardo": true,
+        "restringir_envolvente": false,
+        "actuator_K": 1.0,
+        "actuator_fn_hz": 5.74,
+        "actuator_zeta": 0.85,
+        "actuator_slew_wheel_dps": 462.5,
+        "tau_stall": 2.45,
+        "gamma": 4.5,
+        "T_d_ms": 64.1,
+        "K_ay": 0.3,
+        "_nota": "Baseline 3 (Profesor): Modelo de actuador identificado (J, b, Td) con cotas fijas de catalogo Omega_0 (sin envolvente)"
+      }
+    },
+    "abandono": {
+      "_nota": "Abandono automatico de la corrida. Si el vehiculo queda detenido o con ruedas fuera de la pista, la corrida se cierra sola y guarda la telemetria, con la vuelta como no completada. Solo se arma despues de que el vehiculo supere velocidad_arranque_kmh y no aplica en pits.",
+      "velocidad_min_kmh": 5.0,
+      "tiempo_quieto_s": 8.0,
+      "ruedas_fuera_min": 3,
+      "tiempo_ruedas_fuera_s": 3.0,
+      "velocidad_arranque_kmh": 30.0
+    },
+    "vuelta": {
+      "ventana_estabilizacion_s": 2.0,
+      "tolerancia_velocidad_cruce_kmh": 10.0,
+      "pos_cruce_alta": 0.8,
+      "pos_cruce_baja": 0.2,
+      "tiempo_limite_s": 420.0,
+      "_nota_tiempo": "Doble de la mediana del tiempo de vuelta del perfil mas lento, conservador, 207.96 s, redondeado hacia arriba a multiplo de 10 s. Define vuelta fallida por tiempo y se mide sobre la corrida completa, que incluye la salida de pits de unos 35 s.",
+      "_nota": "El cruce de meta se detecta por el salto de la posicion normalizada. completedLaps no cuenta el primer cruce tras la salida."
+    },
+    "salida": {
+      "directorio_corridas": "datos/corridas"
+    }
+  },
+  "ruta_config": "C:\\Users\\Volante\\Documents\\Paper Q2 SIL-HIL FFB\\scripts\\acq\\TrialSteer_v1.0.1\\TrialSteer\\configs\\base.json",
+  "sha256_config": "ab9e7b485615d0e0a305968d004768d5c9aed78287c921679ffe2371689eb78c",
+  "versiones": {
+    "software": "TrialSteer 1.0.1",
+    "python": "3.13.14",
+    "plataforma": "Windows-11-10.0.26300-SP0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "osqp": "1.1.3",
+    "pyvjoy": "sin version"
+  },
+  "origen": {
+    "barrido_sha256_referencia": "26275553a23895015dfdce2e729c304dfb10047d6e0f750e911c99640dae48fb",
+    "barrido_sha256_actual": "18d33acdaf86f093a36614cb5301dfd74cc2d05eaf9f7f13c8039ed1ee92cbaa",
+    "barrido_sin_cambios": false,
+    "trazada_sha256_referencia": "90c6e5a1955e320c0d00f49b490f1adc3abb0af3ac70144f7e7478f750670915",
+    "trazada_sha256_actual": "90c6e5a1955e320c0d00f49b490f1adc3abb0af3ac70144f7e7478f750670915",
+    "trazada_sin_cambios": true
+  },
+  "sha256_codigo": {
+    "abrir_lanzador.py": "12e836465a3965a34e1d54d4149803d9edb2cf0fe4d5b192fa05e693a1ee9bd3",
+    "controladores/__init__.py": "b3fc97d647d0f5aa17a18ed6076646ee3913d716bd9fcf6691f16f9cc0b82833",
+    "controladores/base.py": "03401bf83d050adcd7b3750d94feb2b8a1566c7dae742bcc4994cf5317b772dd",
+    "controladores/mpc_cinematico.py": "f647612a499041fd6f9fb9ee9bf472441c717f0d2ee8ed9ca7b76f8a48fd6854",
+    "controladores/pure_pursuit.py": "057545f736f8338b4f373b60ed643919231ccb6ca1826f8a43249fbc345ccb7a",
+    "controladores/stanley.py": "588d685f4f17110908837bcf65d837b43924b6398d245fe2c9ac118c9f95ba2d",
+    "ejecutar_corrida.py": "9b1d702cf65ef95fe99011a8503c9f8c841740db2cd205824f0b2199a1ee5725",
+    "empaquetado/construir_exe.py": "5382bde3c1a4909280f63172ab0e178136e86656cd87cd3b586a28e2f72e9d52",
+    "empaquetado/contenido.py": "e9436f60ae9d2bf174401539b23285f94c574bf8882c13707c32e441a2624073",
+    "empaquetado/TrialSteer.py": "8869b0ec2d34f6b507a5c6cc330507a7b75a04d3c135f40a4ad3bfefa4c47c8d",
+    "lanzador/__init__.py": "3180aebf0ebf721a78d37f4e637b34212e891cbe9faa7466df6b4fc6a1717edc",
+    "lanzador/app.py": "eb0f3148b3062660c85a69ccccc6aa6f26c90e038bd3526f596e8ae9c64462ad",
+    "lanzador/corridas.py": "216c6773aed847933b5b03208b420074e8c49f006eb1a25b4cf476bf84b38483",
+    "lanzador/plan.py": "bff1b9862d7412ca9423a11e87b772df24c6d63319aea4d066443962c292a528",
+    "lanzador/plan_piloto.py": "9ce92e88f4e7e9f91f4b09e90685ae690eadf34a690047d0afbdfb6d36c6e258",
+    "lanzador/plan_sintonia.py": "52ec870ef3f7affede67fe0633fdd4c06b95230882bf087d4f5f964c08b05f2a",
+    "lanzador/proceso_consola.py": "deaa936a1afb81709b0792e74d801b6bd9674cf475e1f4ccb2ce992527e6aa72",
+    "plataforma/__init__.py": "d6854e94b2c9afde6ac0191da77db63b685bb1571fc62183974b5bfb03ca76ba",
+    "plataforma/abandono.py": "7076bfe8c57d92b166c2fd2514c160def403a8c132d083a2f14bc53ba2648ba8",
+    "plataforma/actuador.py": "f31f055434b2932d597f031211a1c211be37f58997f3fc0bdb1039c75268a0e7",
+    "plataforma/angulos.py": "6350556c632d28e06de19de70974cccd2028a508fba1686c62708a8a4ace38b7",
+    "plataforma/juego_ac.py": "a3aa59ee5aec6444dfef50ac596990de6c57cbcfb3d97cceb348d1dcc576bd79",
+    "plataforma/longitudinal.py": "c2b2736d650fb1c1577b789d18029ab737d97814db8a4955ee63baee2674748b",
+    "plataforma/memoria_ac.py": "8ab3ba832908bffb99b808a6fd1b26104a146d67a2d14e62610fe0deb18eb85c",
+    "plataforma/perfil.py": "a35ddd74722d6715cd8335103717f92e33f4f6583c8a819f5b0bfc0ed08bfa7c",
+    "plataforma/procedencia.py": "e53c7100e3f6912076cdf15546325e50744153404e769225ee9e174549553de9",
+    "plataforma/registro.py": "1a830275dea22ca6fef2faa844c2d29591e808317717c40bbb6e438e37315615",
+    "plataforma/trazada.py": "c0516b43666379a2e8f4808ca6ca001af33647f0bf50f5d5c49c06648f041e4f",
+    "plataforma/vuelta.py": "3c5e205d16f501c2ff6225b550a580757e8df4f0861d191fab73f5dd91ff688c",
+    "version.py": "bbfbc186880dc7180bc76ebdb36ca2e30a931345865f1cc66b131cf15712745c"
+  },
+  "assetto_corsa": {
+    "carModel": "alfa_romeo_giulietta_qv",
+    "track": "monza",
+    "acVersion": "1.16.4",
+    "lectura": "ok"
+  },
+  "resumen": {
+    "fase_final": "terminada",
+    "vuelta_completada": true,
+    "cruces_detectados": 2,
+    "delta_completedLaps": 0,
+    "cruce_inicio": {
+      "cruce": 1,
+      "ciclo": 744,
+      "t_s": 37.45039850000467,
+      "vueltas_completadas": 0,
+      "diferencia_velocidad_kmh": 1.4019622802734375,
+      "max_abs_e_y_ventana_m": 0.22046346707849707
+    },
+    "cruce_fin": {
+      "cruce": 2,
+      "ciclo": 4878,
+      "t_s": 245.5247829,
+      "vueltas_completadas": 0,
+      "diferencia_velocidad_kmh": 1.294647216796875,
+      "max_abs_e_y_ventana_m": 0.22171893807665521
+    },
+    "tiempo_vuelta_s": 208.07438439999532,
+    "tc_ms_media": 0.6006769420000984,
+    "tc_ms_p95": 0.8034099912038073,
+    "tc_ms_max": 1.9889999966835603,
+    "pct_tc_mayor_50ms": 0.0,
+    "periodo_ms_media": 50.33307769577503,
+    "retardo_ms_p95": 5.704770001466386,
+    "pct_contactos_ok": 100.0,
+    "L_medida_mediana_m": 2.6332133416743155,
+    "pct_sat_magnitud": 0.0,
+    "pct_sat_tasa": 0.0,
+    "pct_direccion_retenida": 0.5328960852633737,
+    "pct_respaldo_controlador": 0.0,
+    "ciclos_ruedas_fuera": 11,
+    "max_ruedas_fuera": 1
+  },
+  "notas": []
+}
